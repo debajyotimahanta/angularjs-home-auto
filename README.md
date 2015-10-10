@@ -43,7 +43,7 @@ Once you have arudino setup, follow the following steps to have Johhny Five and 
 If the upload was successful, the board is now prepared and you can close the Arduino IDE.
 
 ##### Breadboard for "Temperature - TMP36"
-[images/temperature-tmp36.png](images/temperature-tmp36.png)
+![images/temperature-tmp36.png](images/temperature-tmp36.png)
 
 
 2. Host machine/Pie setup

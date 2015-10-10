@@ -12,6 +12,38 @@
 * [Wifi Module](https://www.sparkfun.com/products/11713)
 * [Jumper Wires](https://www.sparkfun.com/products/9194)
 
+
+## Software
+### Pie Software
+Our Pi is running Johhny Five and running process which talks to arudino. The arduino publishes the data over serial port, which is connected to the pie. The pie listens to the data over serial port, parses it and publishes it to the [firebase](firebase.com) node.
+
+```javascript
+var five = require("johnny-five");
+
+five.Board().on("ready", function() {
+    var temperature = new five.Temperature({
+          controller: "TMP36",
+              pin: "A0"
+                });
+
+      temperature.on("data", function() {
+            console.log(this.celsius + "°C", this.fahrenheit + "°F");
+              });
+});
+
+
+```
+
+
+### Ardunio Software
+The arudino is running firemata code which lets it integrate with Pi, which is running the Johhny Five process.
+
+### Mobile Setup
+I used [Ionic](www.ionic.io) to develop the mobile application with (firebase)[firebase.com] as the backend. Firebase provides first citizen support for angular and its [three way binding](https://www.firebase.com/blog/2013-10-04-firebase-angular-data-binding.html) support works great to show realtime data very easily.
+
+In our mobile app, we have used this [three way binding](https://www.firebase.com/blog/2013-10-04-firebase-angular-data-binding.html) to tie our temperature scope variable, which is shown in the screen. The firebase node for this temperature is feed in realtime from our IoT gateway. The IoT gateway is running Johnny Five service which talks to our arudino, which is constantly monitoring our temperature sensor and publishing it to the firebase node.
+
+
 #### Raspberry Pie Setup
 The Pi should be easy to setup, there are numberious tutiral out there depending on the version of linux. Now i think you can even have windows 10 running on it. But i used this tutorial to setup my pie
 
@@ -57,34 +89,4 @@ If the upload was successful, the board is now prepared and you can close the Ar
 
 ##### Breadboard for "Temperature - TMP36"
 ![images/temperature-tmp36.png](images/temperature-tmp36.png)
-
-## Software
-### Pie Software
-Our Pi is running Johhny Five and running process which talks to arudino. The arduino publishes the data over serial port, which is connected to the pie. The pie listens to the data over serial port, parses it and publishes it to the [firebase](firebase.com) node.
-
-```javascript
-var five = require("johnny-five");
-
-five.Board().on("ready", function() {
-    var temperature = new five.Temperature({
-          controller: "TMP36",
-              pin: "A0"
-                });
-
-      temperature.on("data", function() {
-            console.log(this.celsius + "°C", this.fahrenheit + "°F");
-              });
-});
-
-
-```
-
-
-### Ardunio Software
-The arudino is running firemata code which lets it integrate with Pi, which is running the Johhny Five process.
-
-### Mobile Setup
-I used [Ionic](www.ionic.io) to develop the mobile application with (firebase)[firebase.com] as the backend. Firebase provides first citizen support for angular and its [three way binding](https://www.firebase.com/blog/2013-10-04-firebase-angular-data-binding.html) support works great to show realtime data very easily.
-
-In our mobile app, we have used this [three way binding](https://www.firebase.com/blog/2013-10-04-firebase-angular-data-binding.html) to tie our temperature scope variable, which is shown in the screen. The firebase node for this temperature is feed in realtime from our IoT gateway. The IoT gateway is running Johnny Five service which talks to our arudino, which is constantly monitoring our temperature sensor and publishing it to the firebase node.
 

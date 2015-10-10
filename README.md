@@ -2,7 +2,8 @@
  IoT is the next big wave and we can see it all around us. In my talk, i will show how to build a simple home automation hub using Angular, realtime database and microcontrollers. I will go over some of the other frameworks we can leverage to do rapid protoyping.
  This repo is accompny to my meetup on Oct 27, 2015 hosted by [js-chi](http://www.meetup.com/js-chi/events/225146363/)
 ## Hardware
- ### Material List
+
+### Material List
  These are things that i have used from a hardware prespetvie
 * [Arduino](https://www.sparkfun.com/products/12757)
 * [Raspberry Pi](https://www.sparkfun.com/products/12994)
@@ -10,7 +11,9 @@
 * [Temp Sensor](https://www.sparkfun.com/products/10988)
 * [Wifi Module](https://www.sparkfun.com/products/11713)
 * [Jumper Wires](https://www.sparkfun.com/products/9194)
+
 ### Setup
+
 #### Raspberry Pie Setup
 The Pi should be easy to setup, there are numberious tutiral out there depending on the version of linux. Now i think you can even have windows 10 running on it. But i used this tutorial to setup my pie
 
@@ -23,6 +26,7 @@ https://learn.sparkfun.com/tutorials/using-pcduinos-wifi-dongle-with-the-pi
 Once you have this setup, you can ssh into the pie and make sure you have nodejs installed on the pie. The install should be like any normal linux system. Curl the package build it and you are all set.
 
 #### Arduino Setup
+
 The arudino you buy should come with instruction on how to setup it up. You can find more details about it in 
 
 https://www.arduino.cc/en/Guide/HomePage
@@ -30,6 +34,7 @@ https://www.arduino.cc/en/Guide/HomePage
 I will adivse you to go throug few tutorial and getting famiilar with a few basic programs like blink, digital/aganlog read, serial comminication before connecting it to Pie to diving into [Johnny Five](http://johnny-five.io/). I personally thing even though, Jhonny Five makes it very easy to play around with Arduino you need to know how it works at a basic level to trobuleshoot issues, when they come along.
 
 Once you have arudino setup, follow the following steps to have Johhny Five and Arduino up and running
+
 1. Setup Firmata
 ..1. Plug in your Arduino or Arduino compatible microcontroller via USB
 ..2. Open the Arduino IDE, select: File > Examples > Firmata > StandardFirmata
@@ -38,6 +43,7 @@ Once you have arudino setup, follow the following steps to have Johhny Five and 
 If the upload was successful, the board is now prepared and you can close the Arduino IDE.
 
 2. Host machine/Pie setup
+
 In order for Pi or your laptop to talk to Arduino via Jhonny Five you need to have node and then do the following
 #### Source Code:
 

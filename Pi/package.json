@@ -1,0 +1,14 @@
+{
+  "name": "pi",
+  "version": "1.0.0",
+  "description": "This is the software to be hosted on the pie to talk to arduino",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Debajyoti Mahanta",
+  "dependencies": {
+    "firebase": "^2.3.1",
+    "johnny-five": "^0.8.100"
+  }
+}

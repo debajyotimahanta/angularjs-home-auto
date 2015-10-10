@@ -12,8 +12,6 @@
 * [Wifi Module](https://www.sparkfun.com/products/11713)
 * [Jumper Wires](https://www.sparkfun.com/products/9194)
 
-### Setup
-
 #### Raspberry Pie Setup
 The Pi should be easy to setup, there are numberious tutiral out there depending on the version of linux. Now i think you can even have windows 10 running on it. But i used this tutorial to setup my pie
 
@@ -25,7 +23,7 @@ https://learn.sparkfun.com/tutorials/using-pcduinos-wifi-dongle-with-the-pi
 
 Once you have this setup, you can ssh into the pie and make sure you have nodejs installed on the pie. The install should be like any normal linux system. Curl the package build it and you are all set.
 
-#### Source Code:
+##### Source Code:
 
 ``` bash
 git clone git://github.com/rwaldron/johnny-five.git && cd johnny-five
@@ -33,7 +31,7 @@ git clone git://github.com/rwaldron/johnny-five.git && cd johnny-five
 npm install
 ```
 
-#### npm package:
+##### npm package:
 
 Install the module with:
 

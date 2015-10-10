@@ -25,6 +25,21 @@ https://learn.sparkfun.com/tutorials/using-pcduinos-wifi-dongle-with-the-pi
 
 Once you have this setup, you can ssh into the pie and make sure you have nodejs installed on the pie. The install should be like any normal linux system. Curl the package build it and you are all set.
 
+#### Source Code:
+
+``` bash
+git clone git://github.com/rwaldron/johnny-five.git && cd johnny-five
+
+npm install
+```
+
+#### npm package:
+
+Install the module with:
+
+```bash
+npm install johnny-five
+```
 #### Arduino Setup
 
 The arudino you buy should come with instruction on how to setup it up. You can find more details about it in 
@@ -45,24 +60,6 @@ If the upload was successful, the board is now prepared and you can close the Ar
 ##### Breadboard for "Temperature - TMP36"
 ![images/temperature-tmp36.png](images/temperature-tmp36.png)
 
-2. Host machine/Pie setup
-
-In order for Pi or your laptop to talk to Arduino via Jhonny Five you need to have node and then do the following
-#### Source Code:
-
-``` bash
-git clone git://github.com/rwaldron/johnny-five.git && cd johnny-five
-
-npm install
-```
-
-#### npm package:
-
-Install the module with:
-
-```bash
-npm install johnny-five
-```
 ## Software
 ### Pie Software
 Our Pi is running Johhny Five and running process which talks to arudino. The arduino publishes the data over serial port, which is connected to the pie. The pie listens to the data over serial port, parses it and publishes it to the [firebase](firebase.com) node.

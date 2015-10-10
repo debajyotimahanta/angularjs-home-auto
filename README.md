@@ -36,15 +36,14 @@ I will adivse you to go throug few tutorial and getting famiilar with a few basi
 Once you have arudino setup, follow the following steps to have Johhny Five and Arduino up and running
 
 1. Setup Firmata
-..1. Plug in your Arduino or Arduino compatible microcontroller via USB
-..2. Open the Arduino IDE, select: File > Examples > Firmata > StandardFirmata
-..3. Click the "Upload" button.
+  1. Plug in your Arduino or Arduino compatible microcontroller via USB
+  2. Open the Arduino IDE, select: File > Examples > Firmata > StandardFirmata
+  3. Click the "Upload" button.
 
 If the upload was successful, the board is now prepared and you can close the Arduino IDE.
 
 ##### Breadboard for "Temperature - TMP36"
 ![images/temperature-tmp36.png](images/temperature-tmp36.png)
-
 
 2. Host machine/Pie setup
 

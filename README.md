@@ -42,6 +42,10 @@ Once you have arudino setup, follow the following steps to have Johhny Five and 
 
 If the upload was successful, the board is now prepared and you can close the Arduino IDE.
 
+##### Breadboard for "Temperature - TMP36"
+[images/temperature-tmp36.png](images/temperature-tmp36.png)
+
+
 2. Host machine/Pie setup
 
 In order for Pi or your laptop to talk to Arduino via Jhonny Five you need to have node and then do the following
@@ -61,11 +65,32 @@ Install the module with:
 npm install johnny-five
 ```
 ## Software
-### Device Software
-Our Pi is running Johhny Five and running process which talks to arudino. The code for the nodejs app is in . This acts as a gateway and connect to firebase and stores realtime data.
+### Pie Software
+Our Pi is running Johhny Five and running process which talks to arudino. The arduino publishes the data over serial port, which is connected to the pie. The pie listens to the data over serial port, parses it and publishes it to the [firebase](firebase.com) node.
+
+```javascript
+var five = require("johnny-five");
+
+five.Board().on("ready", function() {
+    var temperature = new five.Temperature({
+          controller: "TMP36",
+              pin: "A0"
+                });
+
+      temperature.on("data", function() {
+            console.log(this.celsius + "°C", this.fahrenheit + "°F");
+              });
+});
+
+
+```
+
+
+### Ardunio Software
+The arudino is running firemata code which lets it integrate with Pi, which is running the Johhny Five process.
 
 ### Mobile Setup
-Our mobile phone uses [Ionic](http://ionic.io) to create a mobile application. This connects to [firebase](http://firebase.com) where our Pi feeds data from our Temp Sensor. Since we are using sockets to connect, whenever there is a change in temp, our node Johhny Five service running in Pi sees it, and update the data to the firebase node. 
+I used [Ionic](www.ionic.io) to develop the mobile application with (firebase)[firebase.com] as the backend. Firebase provides first citizen support for angular and its [three way binding](https://www.firebase.com/blog/2013-10-04-firebase-angular-data-binding.html) support works great to show realtime data very easily.
 
-At the phone end, we have [three way binding](https://www.firebase.com/blog/2013-10-04-firebase-angular-data-binding.html) setup for the temperature node. This change in temperature trigger the change in the temp scope variable, which is show in realtime, on the screen.
+In our mobile app, we have used this [three way binding](https://www.firebase.com/blog/2013-10-04-firebase-angular-data-binding.html) to tie our temperature scope variable, which is shown in the screen. The firebase node for this temperature is feed in realtime from our IoT gateway. The IoT gateway is running Johnny Five service which talks to our arudino, which is constantly monitoring our temperature sensor and publishing it to the firebase node.
 

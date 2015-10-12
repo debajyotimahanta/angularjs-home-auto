@@ -10,7 +10,7 @@ Send.prototype.updateTemp = function(temp) {
 Send.prototype.watchValue = function(cb) {
     ref.child('switch').on('value', function(snapshot) {
       
-        if(snapshot.val()>0){
+        if(snapshot.val() === true){
           cb(true);
         }else{
           cb(false);
